@@ -22,5 +22,5 @@
 ```
 Реализованные автоматы из книги Тома Стюарта Теория вычислений для программистов, страницы 90 - 91 
 1) test1.js - детерминированный конечный автомат, детектирующий строки, которые содержат в себе подстроку 'ab'
-![Image alt](https://github.com/Pavel2207/finite_state_machines/blob/main/lab1/source/test1.png)
 ```
+![Image alt](https://github.com/Pavel2207/finite_state_machines/blob/main/lab1/source/test1.png)

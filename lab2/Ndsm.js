@@ -1,5 +1,5 @@
 const StateMachine = require('../StateMachine');
-class Dsm extends StateMachine {
+class Ndsm extends StateMachine {
     /**
      * конструктор
      * @param {Array} alphabet - алфавит
@@ -9,7 +9,7 @@ class Dsm extends StateMachine {
      */
     constructor(alphabet = [], initStateId = 0, endStateId = 0, states = []) {
         super(alphabet, initStateId, endStateId, states);
-        this.currentStateId = initStateId;
+        this.currentStateIds = [initStateId];
     };
     /**
      * Установить начальное состояние
@@ -17,7 +17,7 @@ class Dsm extends StateMachine {
      */
     setInitStateId(initStateId = 0) {
         super.setInitStateId(initStateId);
-        this.currentStateId = initStateId;
+        this.currentStateIds = [initStateId];
     };
     /**
      * Запустить автомат
@@ -25,16 +25,25 @@ class Dsm extends StateMachine {
      * @returns {boolean|string}
      */
     run(str = '') {
-        this.currentStateId = this.initStateId;
+        this.currentStateIds = [this.initStateId];
         const isCorrectString = this.checkString(str);
         if (isCorrectString) {
             const strArr = str.split('');
             strArr.forEach((ch) => {
-                let state = this.states.find(state => state.stateId === this.currentStateId) || {};
-                let {rule = function () {}} = state;
-                this.currentStateId = rule(ch);
+                let currentStateIds = this.currentStateIds.slice();
+                currentStateIds.forEach((currentStateId, index) => {
+                    let state = this.states.find(state => state.stateId === currentStateId) || {};
+                    let {rule = function () {}} = state;
+                    let newStateIds = rule(ch);
+                    if (newStateIds.length === 1) {
+                        this.currentStateIds.splice(index, 1, newStateIds[0])
+                    }
+                    else {
+                        this.currentStateIds = [...this.currentStateIds, ...newStateIds];
+                    }
+                });
             });
-            return this.currentStateId === this.endStateId ? true : false;
+            return this.currentStateIds.includes(this.endStateId);
         }
         else {
             return 'invalid string';
@@ -42,4 +51,4 @@ class Dsm extends StateMachine {
     };
 };
 
-module.exports = Dsm;
+module.exports = Ndsm;

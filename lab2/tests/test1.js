@@ -48,4 +48,7 @@ ndsm.addState({
     }
 });
 
-console.log(ndsm.run('baaa'));
+console.log('baaa: ', ndsm.run('baaa'));
+console.log('bbaa: ', ndsm.run('bbaa'));
+console.log('bbaaaaaa: ', ndsm.run('bbaaaaaa'));
+console.log('bbaaabaa: ', ndsm.run('bbaaabaa'));

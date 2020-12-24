@@ -1,5 +1,5 @@
 const StateMachine = require('../StateMachine');
-class FoldableStateMachine extends StateMachine {
+class Fsm extends StateMachine {
     /**
      * конструктор
      * @param {Array} alphabet - алфавит
@@ -65,9 +65,9 @@ class FoldableStateMachine extends StateMachine {
             return {result, tree};
         }
         else {
-            return 'invalid string';
+            return {result: 'invalid string'};
         }
     };
 };
 
-module.exports = FoldableStateMachine;
+module.exports = Fsm;

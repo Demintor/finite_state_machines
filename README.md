@@ -66,7 +66,7 @@
 ```
 1) test1.js - конечный автомат, соответствующий регулярному выражению /(\+7)|(8)[0-9]{10}$ - детектирует номера телефонов в форматах +7... и 8.....
 ```
-![Image alt](https://github.com/Pavel2207/finite_state_machines/blob/main/lab4/source/test1.png)
+![Image alt](https://github.com/Pavel2207/finite_state_machines/blob/main/lab3/source/test1.png)
 
 ## Лабораторная 4
 ### Конечный автомат с магазинной памятью
